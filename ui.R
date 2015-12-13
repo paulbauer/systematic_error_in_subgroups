@@ -1,32 +1,31 @@
-# library(shiny)
-# library(BH)
-# library(stringr)
-# library(lattice)
-# library(latticeExtra)
-# library(psych) # enfernen?
 library(markdown)
-# library(foreign)
 library(car)
 
 
-  
   shinyUI(fluidPage(
     
-  # Application title
+
   titlePanel("Systematic measurement error in subgroups"),
   
-  # Sidebar with controls to select the random distribution type
-  # and number of observations to generate. Note the use of the
-  # br() element to introduce extra vertical spacing
+
   sidebarLayout(
     sidebarPanel(
-      h5(textOutput("hits")),
       selectInput("groups", label = "Grouping:",
                   choices = c("All units", "males", "females", "males and females", "males and females (+ means)"), selected = 1),
       sliderInput("error_males", label = "Systematic error (males):",
                   min = -10, max = 10, value = 0, step = 1),
       sliderInput("error_females", label = "Systematic error (females):", min = -10, max = 10, value = 0, step = 1),
-      sliderInput("error_y", label = "Systematic error (y values):", min = 0, max = 10, value = 0, step = 1)
+      sliderInput("error_y", label = "Systematic error (y values):", min = 0, max = 10, value = 0, step = 1),
+      br(), br(),
+      
+      div("Shiny app by", 
+          a(href="http://paulcbauer.eu/",target="_blank", 
+            "Paul C. Bauer"),align="right", style = "font-size: 8pt"),
+      
+      
+      div("Shiny/R code:",
+          a(href="https://github.com/paulbauer/measurement_error/",
+            target="_blank","GitHub"),align="right", style = "font-size: 8pt")
 
 
   ),
@@ -41,20 +40,3 @@ library(car)
     )
   )
 ))
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-
-
-
